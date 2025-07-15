@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizzaria Gusto - Melhor Pizza de Salvador</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        .animate-pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: .5;
+            }
+        }
+        .hover-scale:hover {
+            transform: scale(1.05);
+        }
+        .hover-scale-110:hover {
+            transform: scale(1.1);
+        }
+        .group:hover .group-hover-scale {
+            transform: scale(1.1);
+        }
+        .transition-all {
+            transition: all 0.3s ease;
+        }
+        .backdrop-blur {
+            backdrop-filter: blur(8px);
+        }
+        .bg-gradient-red {
+            background: linear-gradient(135deg, #7f1d1d, #dc2626);
+        }
+        .shadow-glow {
+            box-shadow: 0 0 30px rgba(220, 38, 38, 0.3);
+        }
+        .text-shadow {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-black text-white min-h-screen">
+    <!-- Header -->
+    <header class="bg-black bg-opacity-95 backdrop-blur text-white py-4 sticky top-0 z-50 border-b border-gray-800">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center">
+                        <span class="text-white font-bold text-xl">🍕</span>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold">PIZZARIA</h1>
+                        <span class="text-red-500 font-bold text-lg">GUSTO</span>
+                    </div>
+                </div>
+                <button onclick="handleWhatsAppClick()" class="bg-red-600 hover:bg-red-700 text-white font-bold px-6 py-2 rounded-full transition-all hover-scale">
+                    <i class="fas fa-phone w-4 h-4 mr-2"></i>
+                    PEDIR AGORA
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="py-12 sm:py-20 bg-black relative overflow-hidden">
+        <div class="container mx-auto px-4">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-8">
+                    <div class="bg-red-600 bg-opacity-20 text-red-400 border border-red-600 font-bold text-sm px-4 py-2 rounded-full inline-block">
+                        🔥 OFERTA ESPECIAL HOJE
+                    </div>
+
+                    <div class="space-y-4">
+                        <h2 class="text-4xl sm:text-6xl font-bold leading-tight text-shadow">
+                            MELHOR <span class="text-red-500">PIZZA</span>
+                            <br />
+                            PELO MELHOR
+                            <br />
+                            <span class="text-red-500">PREÇO</span>
+                        </h2>
+
+                        <p class="text-xl text-gray-300 max-w-lg">
+                            Ingredientes frescos, massa artesanal e o sabor autêntico que você procura em Salvador.
+                        </p>
+                    </div>
+
+                    <div class="flex items-center space-x-4 text-red-400">
+                        <i class="fas fa-clock"></i>
+                        <span class="text-lg font-semibold">
+                            Oferta expira em: <span id="countdown">02:47:30</span>
+                        </span>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button onclick="handleWhatsAppClick()" class="bg-red-600 hover:bg-red-700 text-white font-bold py-4 px-8 text-lg rounded-full shadow-glow hover-scale transition-all">
+                            <i class="fas fa-phone mr-3"></i>
+                            FAZER PEDIDO
+                            <i class="fas fa-arrow-right ml-3"></i>
+                        </button>
+
+                        <button class="border border-gray-600 text-white hover:bg-gray-800 py-4 px-8 text-lg rounded-full transition-all">
+                            VER CARDÁPIO
+                        </button>
+                    </div>
+
+                    <div class="flex items-center space-x-8 text-sm text-gray-400">
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-clock"></i>
+                            <span>Entrega 30min</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <span>4.9/5 avaliação</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-users"></i>
+                            <span>+10k clientes</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative">
+                    <div class="relative w-full h-96 sm:h-96">
+                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/werfewrffw.jpg-e6CTaQWWFfXASHFv4LPQ84esudLdIz.jpeg" alt="Pizza deliciosa da Pizzaria Gusto" class="rounded-2xl shadow-2xl object-cover w-full h-full border border-gray-800">
+                        <div class="absolute -bottom-4 -right-4 bg-red-600 text-white font-bold px-6 py-3 rounded-full shadow-xl">
+                            <span class="text-sm">MAIS PEDIDA!</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Urgency Bar -->
+    <div class="bg-red-600 text-white py-3">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-center space-x-4 font-bold text-sm sm:text-base">
+                <i class="fas fa-bolt"></i>
+                <span>⚠️ PROMOÇÃO POR TEMPO LIMITADO</span>
+                <i class="fas fa-users"></i>
+                <span><span id="random-users">18</span> pessoas pedindo agora</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Products Section -->
+    <section class="py-16 sm:py-24 bg-gray-900">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h3 class="text-3xl sm:text-5xl font-bold mb-6">
+                    NOSSAS <span class="text-red-500">ESPECIALIDADES</span>
+                </h3>
+                <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+                    Cada pizza é uma obra de arte culinária, preparada com ingredientes selecionados e muito amor.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Pizza 1 -->
+                <div class="bg-gray-800 border border-gray-700 hover:border-red-500 transition-all group rounded-lg relative">
+                    <div class="absolute top-4 right-4 bg-red-600 text-white z-10 px-2 py-1 rounded text-xs">
+                        <i class="fas fa-fire mr-1"></i>
+                        POPULAR
+                    </div>
+                    <div class="p-6">
+                        <div class="relative overflow-hidden rounded-lg mb-6">
+                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/fwfwfew.jpg-ykZ9OCB7fSL31fyO9PcWwS8SpiujVs.jpeg" alt="Tradicionais" class="w-full h-48 object-cover group-hover-scale transition-all">
+                        </div>
+                        <h4 class="text-xl font-bold mb-3 text-white">TRADICIONAIS</h4>
+                        <p class="text-gray-400 mb-4">Sabores clássicos que conquistaram gerações</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-1">
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <span class="text-sm text-gray-400 ml-2">(4.9)</span>
+                            </div>
+                            <i class="fas fa-heart text-red-500"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pizza 2 -->
+                <div class="bg-gray-800 border border-gray-700 hover:border-red-500 transition-all group rounded-lg relative">
+                    <div class="absolute top-4 right-4 bg-red-600 text-white z-10 px-2 py-1 rounded text-xs">
+                        <i class="fas fa-fire mr-1"></i>
+                        POPULAR
+                    </div>
+                    <div class="p-6">
+                        <div class="relative overflow-hidden rounded-lg mb-6">
+                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/23432.jpg-pkzb7AvHdST3E9umCwhiKc3TWHG4zB.jpeg" alt="Especiais" class="w-full h-48 object-cover group-hover-scale transition-all">
+                        </div>
+                        <h4 class="text-xl font-bold mb-3 text-white">ESPECIAIS</h4>
+                        <p class="text-gray-400 mb-4">Criações exclusivas do chef</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-1">
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <span class="text-sm text-gray-400 ml-2">(4.9)</span>
+                            </div>
+                            <i class="fas fa-heart text-red-500"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pizza 3 -->
+                <div class="bg-gray-800 border border-gray-700 hover:border-red-500 transition-all group rounded-lg">
+                    <div class="p-6">
+                        <div class="relative overflow-hidden rounded-lg mb-6">
+                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/2222.jpg-z9ThPtzPjDzTn4x7DWMnU93gGr47M4.jpeg" alt="Gourmet" class="w-full h-48 object-cover group-hover-scale transition-all">
+                        </div>
+                        <h4 class="text-xl font-bold mb-3 text-white">GOURMET</h4>
+                        <p class="text-gray-400 mb-4">Ingredientes premium e sabores únicos</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-1">
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <span class="text-sm text-gray-400 ml-2">(4.9)</span>
+                            </div>
+                            <i class="fas fa-heart text-red-500"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pizza 4 -->
+                <div class="bg-gray-800 border border-gray-700 hover:border-red-500 transition-all group rounded-lg">
+                    <div class="p-6">
+                        <div class="relative overflow-hidden rounded-lg mb-6">
+                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/sdwsfwf.jpg-tOw2t9b4jf5bQMdLsrnLmiCfI9rEzG.jpeg" alt="Artesanais" class="w-full h-48 object-cover group-hover-scale transition-all">
+                        </div>
+                        <h4 class="text-xl font-bold mb-3 text-white">ARTESANAIS</h4>
+                        <p class="text-gray-400 mb-4">Feitas à mão com técnicas tradicionais</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-1">
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <span class="text-sm text-gray-400 ml-2">(4.9)</span>
+                            </div>
+                            <i class="fas fa-heart text-red-500"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pizza 5 -->
+                <div class="bg-gray-800 border border-gray-700 hover:border-red-500 transition-all group rounded-lg relative">
+                    <div class="absolute top-4 right-4 bg-red-600 text-white z-10 px-2 py-1 rounded text-xs">
+                        <i class="fas fa-fire mr-1"></i>
+                        POPULAR
+                    </div>
+                    <div class="p-6">
+                        <div class="relative overflow-hidden rounded-lg mb-6">
+                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/pizza-g6ba7c6d32_1280-740x430.jpg-OlVF5otl6KBNzz0XDwVvdgrDGjmv54.jpeg" alt="Vegetarianas" class="w-full h-48 object-cover group-hover-scale transition-all">
+                        </div>
+                        <h4 class="text-xl font-bold mb-3 text-white">VEGETARIANAS</h4>
+                        <p class="text-gray-400 mb-4">Opções saudáveis e deliciosas</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-1">
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <span class="text-sm text-gray-400 ml-2">(4.9)</span>
+                            </div>
+                            <i class="fas fa-heart text-red-500"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pizza 6 -->
+                <div class="bg-gray-800 border border-gray-700 hover:border-red-500 transition-all group rounded-lg">
+                    <div class="p-6">
+                        <div class="relative overflow-hidden rounded-lg mb-6">
+                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/th.jpg-rEs6fJfxXA9MMJm6M4JEHT3DtTUW9z.jpeg" alt="Da Casa" class="w-full h-48 object-cover group-hover-scale transition-all">
+                        </div>
+                        <h4 class="text-xl font-bold mb-3 text-white">DA CASA</h4>
+                        <p class="text-gray-400 mb-4">Receitas secretas da família</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-1">
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <span class="text-sm text-gray-400 ml-2">(4.9)</span>
+                            </div>
+                            <i class="fas fa-heart text-red-500"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <button onclick="handleWhatsAppClick()" class="bg-red-600 hover:bg-red-700 text-white font-bold py-4 px-12 text-xl rounded-full shadow-xl hover-scale transition-all">
+                    <i class="fas fa-phone mr-3"></i>
+                    PEDIR AGORA
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof -->
+    <section class="py-16 sm:py-24 bg-black">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h3 class="text-3xl sm:text-5xl font-bold mb-6">
+                    O QUE DIZEM NOSSOS <span class="text-red-500">CLIENTES</span>
+                </h3>
+                <p class="text-xl text-gray-300">Mais de 10.000 soteropolitanos já aprovaram!</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Review 1 -->
+                <div class="bg-gray-800 border border-gray-700 rounded-lg">
+                    <div class="p-6">
+                        <div class="flex items-center space-x-1 mb-4">
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                        </div>
+                        <p class="text-gray-300 mb-6 italic text-lg">"Simplesmente a melhor pizza de Salvador! O sabor é incomparável e a entrega sempre pontual."</p>
+                        <div class="flex items-center space-x-4">
+                            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=60&h=60&fit=crop&crop=face" alt="Maria Silva" class="w-12 h-12 rounded-full border-2 border-red-500">
+                            <div>
+                                <p class="font-semibold text-white text-lg">Maria Silva</p>
+                                <p class="text-gray-400">Barra</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="bg-gray-800 border border-gray-700 rounded-lg">
+                    <div class="p-6">
+                        <div class="flex items-center space-x-1 mb-4">
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                        </div>
+                        <p class="text-gray-300 mb-6 italic text-lg">"Qualidade excepcional! Minha família virou cliente fiel. Recomendo de olhos fechados!"</p>
+                        <div class="flex items-center space-x-4">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop&crop=face" alt="João Santos" class="w-12 h-12 rounded-full border-2 border-red-500">
+                            <div>
+                                <p class="font-semibold text-white text-lg">João Santos</p>
+                                <p class="text-gray-400">Pituba</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="bg-gray-800 border border-gray-700 rounded-lg">
+                    <div class="p-6">
+                        <div class="flex items-center space-x-1 mb-4">
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                        </div>
+                        <p class="text-gray-300 mb-6 italic text-lg">"Ingredientes frescos, massa perfeita. A Pizzaria Gusto superou todas as minhas expectativas!"</p>
+                        <div class="flex items-center space-x-4">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=60&h=60&fit=crop&crop=face" alt="Ana Costa" class="w-12 h-12 rounded-full border-2 border-red-500">
+                            <div>
+                                <p class="font-semibold text-white text-lg">Ana Costa</p>
+                                <p class="text-gray-400">Ondina</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="py-16 sm:py-24 bg-gradient-red">
+        <div class="container mx-auto px-4 text-center">
+            <div class="max-w-4xl mx-auto">
+                <h3 class="text-4xl sm:text-6xl font-bold mb-8 text-shadow">
+                    PRONTO PARA A MELHOR
+                    <br />
+                    <span class="text-yellow-400">PIZZA</span> DA SUA VIDA?
+                </h3>
+
+                <p class="text-xl sm:text-2xl mb-12 text-red-100">
+                    Não perca mais tempo! Faça seu pedido agora e descubra por que somos a pizzaria favorita de Salvador.
+                </p>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-12">
+                    <div class="text-center">
+                        <i class="fas fa-clock text-6xl text-yellow-400 mb-4"></i>
+                        <h4 class="text-xl font-bold mb-2">ENTREGA RÁPIDA</h4>
+                        <p class="text-red-100">Em até 30 minutos na sua porta</p>
+                    </div>
+                    <div class="text-center">
+                        <i class="fas fa-star text-6xl text-yellow-400 mb-4"></i>
+                        <h4 class="text-xl font-bold mb-2">QUALIDADE GARANTIDA</h4>
+                        <p class="text-red-100">Ingredientes frescos sempre</p>
+                    </div>
+                    <div class="text-center">
+                        <i class="fas fa-users text-6xl text-yellow-400 mb-4"></i>
+                        <h4 class="text-xl font-bold mb-2">CLIENTES SATISFEITOS</h4>
+                        <p class="text-red-100">Mais de 10.000 avaliações 5 estrelas</p>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="bg-yellow-400 text-black font-bold py-4 px-8 rounded-full inline-block text-xl animate-pulse">
+                        ⚠️ OFERTA POR TEMPO LIMITADO!
+                    </div>
+
+                    <button onclick="handleWhatsAppClick()" class="bg-white text-red-600 hover:bg-gray-100 font-bold py-6 px-16 text-2xl rounded-full shadow-2xl hover-scale-110 transition-all w-full sm:w-auto">
+                        <i class="fas fa-phone text-2xl mr-4"></i>
+                        FAZER PEDIDO AGORA
+                        <i class="fas fa-arrow-right text-2xl ml-4"></i>
+                    </button>
+
+                    <p class="text-lg text-red-100">
+                        💳 Aceitamos PIX, Cartão e Dinheiro • 🚚 Entregamos em toda Salvador
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black border-t border-gray-800 py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center">
+                            <span class="text-white font-bold text-xl">🍕</span>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold">PIZZARIA</h4>
+                            <span class="text-red-500 font-bold">GUSTO</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-400">A melhor pizzaria de Salvador, servindo sabores autênticos desde sempre.</p>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-bold mb-4 text-white">Contato</h4>
+                    <div class="space-y-3 text-gray-400">
+                        <p class="flex items-center space-x-2">
+                            <i class="fas fa-phone"></i>
+                            <span>(71) 99717-9370</span>
+                        </p>
+                        <p class="flex items-center space-x-2">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Salvador - BA</span>
+                        </p>
+                        <p class="flex items-center space-x-2">
+                            <i class="fas fa-clock"></i>
+                            <span>Seg-Dom: 18h às 23h</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-bold mb-4 text-white">Serviços</h4>
+                    <div class="space-y-2 text-gray-400">
+                        <p>🍕 Delivery</p>
+                        <p>🏪 Balcão</p>
+                        <p>🎉 Eventos</p>
+                        <p>👨‍🍳 Pizzas Personalizadas</p>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-bold mb-4 text-white">Garantias</h4>
+                    <div class="space-y-2 text-gray-400">
+                        <p>✅ Entrega em 30min</p>
+                        <p>✅ Ingredientes frescos</p>
+                        <p>✅ Satisfação garantida</p>
+                        <p>✅ Melhor preço da região</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500">
+                <p>&copy; 2024 Pizzaria Gusto. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Timer countdown functionality
+        let timeLeft = {
+            hours: 2,
+            minutes: 47,
+            seconds: 30
+        };
+
+        function updateCountdown() {
+            const countdownElement = document.getElementById('countdown');
+            
+            if (timeLeft.seconds > 0) {
+                timeLeft.seconds--;
+            } else if (timeLeft.minutes > 0) {
+                timeLeft.minutes--;
+                timeLeft.seconds = 59;
+            } else if (timeLeft.hours > 0) {
+                timeLeft.hours--;
+                timeLeft.minutes = 59;
+                timeLeft.seconds = 59;
+            }
+
+            const formattedTime = `${String(timeLeft.hours).padStart(2, '0')}:${String(timeLeft.minutes).padStart(2, '0')}:${String(timeLeft.seconds).padStart(2, '0')}`;
+            countdownElement.textContent = formattedTime;
+        }
+
+        // Update countdown every second
+        setInterval(updateCountdown, 1000);
+
+        // Random users counter
+        function updateRandomUsers() {
+            const randomUsersElement = document.getElementById('random-users');
+            const randomNumber = Math.floor(Math.random() * 20) + 15;
+            randomUsersElement.textContent = randomNumber;
+        }
+
+        // Update random users every 10 seconds
+        setInterval(updateRandomUsers, 10000);
+
+        // WhatsApp integration
+        function handleWhatsAppClick() {
+            const whatsappUrl = "https://wa.me/5571997179370?text=Olá! Vi a promoção no site e quero fazer meu pedido!";
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // Smooth scrolling for internal links
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add smooth scrolling behavior
+            document.documentElement.style.scrollBehavior = 'smooth';
+        });
+    </script>
+</body>
+</html>
